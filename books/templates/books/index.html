@@ -1,44 +1,99 @@
 {% load static from staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-	<title>Test Page</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" >
-</head>
+<html>
+    <head>
+	    <title>Test Page</title>
+        <!--<link rel="stylesheet"-->
+              <!--href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"-->
+              <!--integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
 
-<!--<body>-->
-	<!--<div class="container mt-5">-->
-		<!--<h1>Book List</h1>-->
-		<!--<div class="row">-->
-			<!--{% for book in f %}-->
-				<!--<div class="col-md-4 text-center mt-2 mb-2">-->
-					<!--<div class="card" style="width: 18rem;">-->
-						<!--<div class="card-body">-->
-							<!--<p class="card-text"><a href="{{ book.link }}">{{book.title}}</a></p>-->
-							<!--<small>{{ book.author }}</small>-->
-						<!--</div>-->
-					<!--</div>-->
-				<!--</div>-->
-			<!--{% endfor %}-->
-		<!--</div>-->
-	<!--</div>-->
-<!--</body>-->
-<!--</html>-->
-<!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>-->
-<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-<h3>Add Book to Database below this</h3>
-{% if all_books %}
-    <h3>List of Books: </h3>
-    <ul>
-        {% for book in all_books %}
+        <link rel="stylesheet"
+              type="text/css" href="{% static 'css/style.css' %}" >
+    </head>
+
+
+    {% block body %}
+    <div class="container">
+
+        <h3>Add Book to Database below this</h3>
+
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="Author">Author</label>
+                <input type="text" class="form-control" placeholder="Author" width="50%">
+            </div>
+
+            <div class="form-group">
+                <label for="Country">Country</label>
+                <input type="text" class="form-control" placeholder="Country">
+            </div>
+
+            <div class="form-group">
+                <label for="Image Link">Country</label>
+                <input type="text" class="form-control" placeholder="Image Link">
+            </div>
+
+            <div class="form-group">
+                <label for="Language">Language</label>
+                <input type="text" class="form-control" placeholder="Language">
+            </div>
+
+        </form>
+        <form class="form-inline">
+
+            <div class="form-group">
+                <label for="Link">Link</label>
+                <input type="text" class="form-control" placeholder="Link">
+            </div>
+
+            <div class="form-group">
+                <label for="Pages">Pages</label>
+                <input type="number" class="form-control" placeholder="Pages">
+            </div>
+
+            <div class="form-group">
+                <label for="Title">Title</label>
+                <input type="text" class="form-control" placeholder="Title">
+            </div>
+
+            <div class="form-group">
+                <label for="Year">Year</label>
+                <input type="number" class="form-control" placeholder="Year">
+            </div>
+        </form>
+
+            <form method="post">
+
+                {% csrf_token %}
+
+
+                </form>
+
+                <button type="submit">Submit</button>
+            </form>
+
+
+        <h2>{{ text }}</h2>
+
+        {% if all_books %}
+            <h3>List of Books: </h3>
+        <ul>
+            {% for book in all_books %}
             <li><a herf="/book/{{ book.id }}/">{{ book.title }}</a></li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <h3>Don't have any books</h3>
-{% endif %}
+            {% endfor %}
+        </ul>
+        {% else %}
+        <h3>Don't have any books</h3>
+        {% endif %}
+
+    </div>
+
+    {% endblock %}
+
+
+
+</html>
+
