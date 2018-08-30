@@ -1,5 +1,17 @@
-from django.http import HttpResponse
+from django.http import Http404
+from django.shortcuts import render
+from .models import Book
+
 
 def index(request):
-	return HttpResponse("<h1>Hello</h1>")
-# Create your views here.
+	all_books = Book.objects.all()
+	# context = {'all_books': all_books}
+	return render(request, 'books/index.html', {'all_books': all_books})
+
+
+def detail(request, book_id):
+	try:
+		book = Book.objects.get(pk=book_id)
+	except Book.DoesNotExist:
+		raise Http404("Book does not exist")
+	return render(request, 'books/detail.html', {'book': book})
