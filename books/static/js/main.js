@@ -5,14 +5,14 @@ $(document).on('submit', '#create-book-form', function(e){
         type: 'POST',
         url: '/create/',
         data: {
-            title:$('#title').val(),
             author:$('#author').val(),
             country:$('#country').val(),
+            image_link:$('#image_link').val(),
             language:$('#language').val(),
             link:$('#link').val(),
             pages:$('#pages').val(),
+            title:$('#title').val(),
             year:$('#year').val(),
-            image_link:$('#image_link').val(),
             csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
         },
      success:function(){
