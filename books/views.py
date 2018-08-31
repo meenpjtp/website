@@ -6,7 +6,7 @@ from books.forms import HomeForm
 
 
 class HomeView(TemplateView):
-	template_name = 'books/index.html'
+	template_name = 'books/home.html'
 
 	def get(self, request):
 		form = HomeForm()
@@ -26,7 +26,7 @@ class HomeView(TemplateView):
 def index(request):
 	all_books = Book.objects.all()
 	# context = {'all_books': all_books}
-	return render(request, 'books/index.html', {'all_books': all_books})
+	return render(request, 'books/home.html', {'all_books': all_books})
 
 
 def detail(request, book_id):
