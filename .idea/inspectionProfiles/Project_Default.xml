@@ -5,6 +5,7 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="whitenoise.django.*" />
+          <option value="os" />
         </list>
       </option>
     </inspection_tool>
