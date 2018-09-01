@@ -57,3 +57,4 @@ def detail(request, book_id):
 		raise Http404("Book does not exist")
 	return render(request, 'books/detail.html', {'book': book})
 
+

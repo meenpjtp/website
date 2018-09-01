@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load static %}
+{% load staticfiles %}
 
 <html>
 
@@ -41,7 +41,7 @@
                         <label class="sr-only" for="author">Author:</label>
                         <input type="text" class="form-control" placeholder="Author" id="author" required>
                     </div>
-                    <div class="form-group">
+                        <div class="form-group">
                         <label class="sr-only" for="country">country:</label>
                         <input type="text" class="form-control" placeholder="Country" id="country" required/>
                     </div>
@@ -49,6 +49,7 @@
                         <label class="sr-only" for="language">Language:</label>
                         <input type="text" class="form-control" placeholder="Language" id="language" required>
                     </div>
+
                     <div class="form-group">
                         <label class="sr-only" for="link">Link:</label>
                         <input type="text" class="form-control" placeholder="Link" id="link" required/>
@@ -72,36 +73,22 @@
                 </div>
             </div>
 
+
+            <!--i cannot fix this, after submit display Add Book duplicate -->
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Book List
-                    <input class="form-control pull-right" id="search-input" onkeyup="filter()"
-                            type="text" placeholder="Search by Title">
+                    <h3>Book List add to DB success</h3>
                 </div>
 
                 <div class="panel-body">
                 <div class="table-responsive-sm">
-                    <table id="list" class="table table-bordered">
-                        <!--<thead>-->
-                            <!--<tr>-->
-                                <!--<th><button id="s_title" onclick="sortBy(this.id)"-->
-                                    <!--class="sort-button">Title</button></th>-->
-                                <!--<th><button id="s_author" onclick="sortBy(this.id)"-->
-                                    <!--class="sort-button">Author</button></th>-->
-                                <!--<th><button id="s_isbn" onclick="sortBy(this.id)"-->
-                                    <!--class="sort-button">ISBN</button></th>-->
-                                <!--<th></th>-->
-                            <!--</tr>-->
-                        <!--</thead>-->
+                    <table id="list" class="table table-hover table-striped">
                         <tbody id="list-body">
                             {% for book in all_books %}
                             <tr>
-                                <!--<td><a target="_blank" href="{{ book.url }}">{{ book.image_link }}</a></td>-->
+                                <td><img src="{{ book.image_link.url }}" class="img-responsive"></td>
                                 <td>{{ book.title }}</td>
                                 <td>{{ book.author }}</td>
-                                <td>{{ book.country }}</td>
-                                <td>{{ book.language }}</td>
-                                <td>{{ book.pages }}</td>
                                 <td>{{ book.year }}</td>
 
                             </tr>
@@ -112,8 +99,6 @@
                 </div>
 
             </div>
-
-        </div>
 
         </div>
 
