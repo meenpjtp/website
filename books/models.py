@@ -4,7 +4,7 @@ from django.db import models
 class Book(models.Model):
 	author = models.CharField(max_length=250)
 	country = models.CharField(max_length=50)
-	image_link = models.FileField()
+	image_link = models.ImageField(upload_to='images', blank=True)
 	language = models.CharField(max_length=50)
 	link = models.URLField(default='')
 	pages = models.IntegerField(default=0)

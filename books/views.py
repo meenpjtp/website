@@ -2,7 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import Http404
 from .models import Book
-
+# import os
+# import json
+# from django.shortcuts import render
+# from django.conf import settings
 
 sort_count = {'author': 0, 'country': 0, 'image_link': 0, 'language': 0, 'link': 0, 'pages': 0, 'title': 0, 'year': 0}
 
@@ -12,6 +15,18 @@ def index(request):
 	all_books = Book.objects.all()
 	sort_count = {'author': 0, 'country': 0, 'image_link': 0, 'language': 0, 'link': 0, 'pages': 0, 'title': 0, 'year': 0}
 	return render(request, 'books/index.html', {'all_books': all_books})
+
+
+# def index(request):
+# 	file = os.path.join(settings.BASE_DIR, 'books/books.json')
+#
+# 	with open(file) as f:
+# 		data = json.loads(f.read())
+#
+# 	context = {'var1': 'hello', 'f': data}
+# 	# template = loader.get_template('index.html')
+#
+# 	return render(request, 'books/index.html', context)
 
 
 def create_book(request):
