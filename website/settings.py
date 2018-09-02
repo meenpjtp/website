@@ -25,7 +25,7 @@ SECRET_KEY = '0mdvu=m0b$k$y0oz2h^#s@a7ku0)mlh57$q^)o6xt@hubbfpzv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['booklistweb.herokuapp.com']
 
 
 # Application definition
@@ -132,5 +132,5 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
